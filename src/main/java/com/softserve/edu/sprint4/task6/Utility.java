@@ -3,6 +3,10 @@ package com.softserve.edu.sprint4.task6;
 import java.util.Arrays;
 import java.util.Comparator;
 
+enum Level {
+    JUNIOR, MIDDLE, SENIOR
+}
+
 class Person {
     protected String name;
     protected int age;
@@ -62,29 +66,34 @@ class Developer extends Employee {
     }
 }
 
-enum Level {
-    JUNIOR, MIDDLE, SENIOR
-}
-
 class Utility {
-    // Write sortPeople mentod here
-    //
-
-    // TODO
+    public static <T extends Person> void sortPeople(T[] people, Comparator<? super T> comparator) {
+        Arrays.sort(people, comparator);
+    }
 }
 
 class PersonComparator implements Comparator<Person> {
 
     @Override
     public int compare(Person person1, Person person2) {
-        return 0; // TODO Update
+        int compareName = person1.getName().compareTo(person2.getName());
+        int compareAge = Integer.compare(person1.getAge(), person2.getAge());
+        return compareName != 0 ? compareName : compareAge;
     }
 }
 
 class EmployeeComparator implements Comparator<Employee> {
-
+    @Override
     public int compare(Employee emp1, Employee emp2) {
-        return 0; // TODO Update
+        int name = emp1.getName().compareTo(emp2.getName());
+        if (name != 0) {
+            return name;
+        }
+        int age = Integer.compare(emp1.getAge(), emp2.getAge());
+        if (age != 0) {
+            return age;
+        }
+        return Double.compare(emp1.getSalary(), emp2.getSalary());
     }
 }
 
@@ -92,6 +101,19 @@ class DeveloperComparator implements Comparator<Developer> {
 
     @Override
     public int compare(Developer developer1, Developer developer2) {
-        return 0; // TODO Update
+        int name = developer1.getName().compareTo(developer2.getName());
+        if (name != 0) {
+            return name;
+        }
+        int age = Integer.compare(developer1.getAge(), developer2.getAge());
+        if (age != 0) {
+            return age;
+        }
+        int salary = Double.compare(developer1.getSalary(), developer2.getSalary());
+        if (salary != 0) {
+            return salary;
+        }
+        return developer1.getLevel().compareTo(developer2.getLevel());
     }
+
 }
