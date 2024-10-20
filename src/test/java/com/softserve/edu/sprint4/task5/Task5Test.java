@@ -22,7 +22,7 @@ class Task5Test {
 		assertTrue(AverageValueTools.hasMethodReturnType("com.softserve.edu.sprint4.task5.ArrayUtil", "averageValue", double.class));
 	}
 
-	/* TODO Uncomment
+
 
 	@DisplayName("Checks if 'averageValue' method calculate average of Integer values")
 	@Test
@@ -42,5 +42,4 @@ class Task5Test {
 		assertTrue(AverageValueTools.averageValueFloat());
 	}
 
-	*/
 }
