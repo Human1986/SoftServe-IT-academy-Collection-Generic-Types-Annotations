@@ -69,7 +69,7 @@ public class CheckAndPrintTools {
         }
     }
 
-    /* TODO Uncomment
+
 
     public static boolean checkClassForAnnot() {
         return CheckCamelCase.checkAndPrint(com.softserve.edu.sprint4.task7.ClassForAnnot.class);
@@ -83,5 +83,5 @@ public class CheckAndPrintTools {
         return CheckCamelCase.checkAndPrint(com.softserve.edu.sprint4.task7.Class2.class);
     }
 
-    */
+
 }

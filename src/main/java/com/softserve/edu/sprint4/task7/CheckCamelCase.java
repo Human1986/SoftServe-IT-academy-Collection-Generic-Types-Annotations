@@ -48,5 +48,20 @@ public class CheckCamelCase {
 	// constants CAMELCASE_PATTERN and ERROR_MESSAGE_TEMPLATE
 
 	// checkAndPrint(...) method
+	public static final String CAMELCASE_PATTERN = "^[a-z]+[a-zA-Z0-9]*$";
 
+	public static boolean checkAndPrint(Class<?> clazz) {
+		int count = 0;
+		Method[] declaredMethods = clazz.getDeclaredMethods();
+		for (Method method : clazz.getDeclaredMethods()) {
+			if (method.isAnnotationPresent(CamelCase.class)) {
+				if (method.getName().matches(CAMELCASE_PATTERN)) {
+					count++;
+				} else {
+					System.out.println("method " + clazz.getSimpleName() + "." + method.getName() + " doesn't satisfy camelCase naming convention");
+				}
+			}
+		}
+		return count == declaredMethods.length;
+	}
 }
